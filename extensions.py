@@ -1,6 +1,7 @@
 '''from flask_sqlalchemy import SQLAlchemy
 import boto3
 import os
+from flask_wtf import CSRFProtect
 
 db = SQLAlchemy()
 

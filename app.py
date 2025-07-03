@@ -1,5 +1,5 @@
 from flask import Flask, g, render_template, request, redirect, url_for, flash, session
-from flask_wtf.csrf import CSRFProtect  # Add this import at the top
+# from flask_wtf.csrf import CSRFProtect  # Add this import at the top
 from datetime import timedelta
 from config.db_config import DBConfig
 from db import PostgresConnector
@@ -17,6 +17,8 @@ from flask_migrate import Migrate
 from flask.cli import with_appcontext
 from flask import render_template, session
 from datetime import datetime
+
+from extensions import csrf
 
 from blueprint.auth import auth_bp
 from blueprint.profile import profile_bp
@@ -48,7 +50,7 @@ app.config['SESSION_COOKIE_SECURE'] = False  # Allow HTTP cookies
 app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # More lenient than 'Strict'
 
 # Configure CSRF Protection
-csrf = CSRFProtect(app)  # This initializes CSRF protection
+# csrf = CSRFProtect(app)  # This initializes CSRF protection
 
 # Security configurations
 app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY', 'your-development-secret-key')
