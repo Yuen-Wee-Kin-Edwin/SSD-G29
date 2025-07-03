@@ -30,7 +30,7 @@ def payment():
 
             
             # Validate card number (basic validation)
-        if card_number and len(card_number) == 16 and card_number.isdigit() and amount and amount.isdigit():
+        if card_number and len(card_number) == 16 and card_number.isdigit() and amount:
             try:
                     new_payment = Payment(
                         user_id=session['user_id'],
@@ -56,5 +56,3 @@ def payment():
     history = Payment.query.filter_by(user_id=session['user_id']).order_by(Payment.created_at.desc()).all()
     csrf_token = generate_csrf()  # Generate CSRF token for the form
     return render_template('payment.html', history=history, csrf_token=csrf_token)
-
- 
